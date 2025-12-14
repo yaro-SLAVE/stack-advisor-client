@@ -1,40 +1,34 @@
 // Enums
 export enum AppType {
-  WEB = 'WEB',
-  MOBILE = 'MOBILE',
-  DESKTOP = 'DESKTOP',
-  EMBEDDED = 'EMBEDDED',
-  MICROSERVICES = 'MICROSERVICES'
+    WEB = 'web',
+    ANDROID = 'android',
+    IOS = 'ios',
+    DESKTOP = 'desktop'
 };
 
 export enum TimeToShow {
-  URGENT = 'URGENT',
-  QUICK = 'QUICK',
-  NORMAL = 'NORMAL',
-  NO_LIMIT = 'NO_LIMIT'
+    FAST = 'fast',
+    MEDIUM = 'medium',
+    SLOW = 'slow'
 };
 
 export enum ProjectType {
-  MVP = 'MVP',
-  ENTERPRISE = 'ENTERPRISE',
-  STARTUP = 'STARTUP',
-  PERSONAL = 'PERSONAL',
-  RESEARCH = 'RESEARCH'
+    PET = 'pet',
+    RESEARCH = 'research',
+    COMMERCIAL = 'commercial'
 };
 
 export enum TeamSize {
-  SOLO = 'SOLO',
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE',
-  ENTERPRISE = 'ENTERPRISE'
+    MICRO = 'micro', 
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    BIG = 'big'
 };
 
 export enum Scale {
-  SMALL = 'SMALL',
-  MEDIUM = 'MEDIUM',
-  LARGE = 'LARGE',
-  MASSIVE = 'MASSIVE'
+    COMPLEX = 'complex',
+    EASY = 'easy',
+    HARD = 'hard'
 };
 
 export enum EntryThreshold {
@@ -65,35 +59,26 @@ export enum Purpose {
 };
 
 export enum TasksType {
-  CRUD = 'CRUD',
-  REAL_TIME = 'REAL_TIME',
-  HIGH_LOAD = 'HIGH_LOAD',
-  IO_INTENSIVE = 'IO_INTENSIVE',
-  COMPUTATION_INTENSIVE = 'COMPUTATION_INTENSIVE',
-  MACHINE_LEARNING = 'MACHINE_LEARNING'
+    BACKEND = 'backend',
+    FRONTEND = 'frontend',
+    MOBILE = 'mobile',
+    DESKTOP = 'desktop'
 };
 
 export enum StorageType {
-  RELATIONAL = 'RELATIONAL',
-  DOCUMENT = 'DOCUMENT',
-  KEY_VALUE = 'KEY_VALUE',
-  COLUMNAR = 'COLUMNAR',
-  GRAPH = 'GRAPH',
-  TIME_SERIES = 'TIME_SERIES'
+  RELATIONAL = 'relational',
+  DOCUMENT = 'document',
+  KEY_VALUE = 'key-value'
 };
 
 export enum StorageLocation {
-  LOCAL = 'LOCAL',
-  CLOUD = 'CLOUD',
-  HYBRID = 'HYBRID',
-  EDGE = 'EDGE'
+    LOCAL = 'local',
+    REMOTE = 'remote'
 };
 
 export enum DataBaseType {
-  SQL = 'SQL',
-  NO_SQL = 'NO_SQL',
-  NEW_SQL = 'NEW_SQL',
-  IN_MEMORY = 'IN_MEMORY'
+  SQL = 'sql',
+  NO_SQL = 'no_sql'
 };
 
 export type Language = {
@@ -169,13 +154,13 @@ export type LanguageRequirementsRequest = {
 export type FrameworkRequirementsRequest = {
   is_reactive?: boolean;
   is_actual?: boolean;
-  tasksType?: TasksType;
+  tasks_type?: TasksType;
 }
 
 export type DataStorageRequirementsRequest = {
   storage_type?: StorageType;
   storage_location?: StorageLocation;
-  dataBase_type?: DataBaseType;
+  data_base_type?: DataBaseType;
 }
 
 export type ProjectRequirementsRequest = {

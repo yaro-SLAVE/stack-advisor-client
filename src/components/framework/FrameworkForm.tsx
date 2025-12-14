@@ -25,7 +25,7 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
     languages: initialData?.languages || [],
     is_reactive: initialData?.is_reactive || false,
     last_updated_at: initialData?.last_updated_at || new Date().toISOString().split('T')[0],
-    tasks_type: initialData?.tasks_type || TasksType.CRUD,
+    tasks_type: initialData?.tasks_type || TasksType.BACKEND,
   });
 
   useEffect(() => {

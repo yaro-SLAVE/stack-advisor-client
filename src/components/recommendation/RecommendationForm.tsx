@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import type {
-  AppType,
-  TeamSize,
-  ProjectType,
-  Scale,
-  TimeToShow,
-  EntryThreshold,
-  ExecutionModel,
-  Popularity,
-  Purpose,
-  TasksType,
-  StorageType,
-  StorageLocation,
-  DataBaseType,
   Language,
   Framework,
   DataStorage,
   ProjectRequirementsRequest
 } from '../../api/types';
+
+import {
+    AppType,
+    TeamSize,
+    ProjectType,
+    Scale,
+    TimeToShow,
+    EntryThreshold,
+    ExecutionModel,
+    Popularity,
+    Purpose,
+    TasksType,
+    StorageType,
+    StorageLocation,
+    DataBaseType,
+} from '../../api/types'
+import axios from 'axios';
 
 interface RecommendationFormProps {
   onSubmit: (data: ProjectRequirementsRequest) => void;
@@ -30,26 +34,26 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const [formData, setFormData] = useState<ProjectRequirementsRequest>({
-    appType: AppType.WEB,
-    teamSize: TeamSize.SMALL,
-    projectType: ProjectType.STARTUP,
-    scale: Scale.SMALL,
-    timeToShow: TimeToShow.NORMAL,
+    app_type: AppType.WEB,
+    team_size: TeamSize.SMALL,
+    project_type: ProjectType.PET,
+    scale: Scale.EASY,
+    time_to_show: TimeToShow.MEDIUM,
     languages: [],
     frameworks: [],
-    dataStorages: [],
-    languageRequirements: {},
-    frameworkRequirements: {},
-    dataStorageRequirements: {},
+    data_storages: [],
+    language_requirements: {},
+    framework_requirements: {},
+    data_storage_requirements: {},
   });
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const [langs, fws, dss] = await Promise.all([
-          languageService.getAllLanguages(),
-          frameworkService.getAllFrameworks(),
-          dataStorageService.getAllDataStorages()
+          (await axios.get('/api/language/')).data,
+          (await axios.get('/api/framework/')).data,
+          (await axios.get('/api/datastorage/')).data
         ]);
         setLanguages(langs);
         setFrameworks(fws);
@@ -86,7 +90,7 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
     }
   };
 
-  const handleArrayChange = (type: 'languages' | 'frameworks' | 'dataStorages', id: number, checked: boolean) => {
+  const handleArrayChange = (type: 'languages' | 'frameworks' | 'data_storages', id: number, checked: boolean) => {
     setFormData(prev => {
       const current = prev[type] || [];
       const newArray = checked
@@ -104,8 +108,8 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
         <div className="form-group">
           <label htmlFor="appType">Тип приложения:</label>
           <select
-            id="appType"
-            name="appType"
+            id="app_type"
+            name="app_type"
             value={formData.appType}
             onChange={handleChange}
             className="form-select"
@@ -119,11 +123,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
         </div>
 
         <div className="form-group">
-          <label htmlFor="teamSize">Размер команды:</label>
+          <label htmlFor="team_size">Размер команды:</label>
           <select
-            id="teamSize"
-            name="teamSize"
-            value={formData.teamSize}
+            id="team_size"
+            name="team_size"
+            value={formData.team_size}
             onChange={handleChange}
             className="form-select"
           >
@@ -136,11 +140,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
         </div>
 
         <div className="form-group">
-          <label htmlFor="projectType">Тип проекта:</label>
+          <label htmlFor="project_type">Тип проекта:</label>
           <select
-            id="projectType"
-            name="projectType"
-            value={formData.projectType}
+            id="project_type"
+            name="project_type"
+            value={formData.project_type}
             onChange={handleChange}
             className="form-select"
           >
@@ -170,11 +174,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
         </div>
 
         <div className="form-group">
-          <label htmlFor="timeToShow">Сроки выхода:</label>
+          <label htmlFor="time_to_show">Сроки выхода:</label>
           <select
-            id="timeToShow"
-            name="timeToShow"
-            value={formData.timeToShow}
+            id="time_to_show"
+            name="time_to_show"
+            value={formData.time_to_show}
             onChange={handleChange}
             className="form-select"
           >
@@ -231,8 +235,8 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
                 <input
                   type="checkbox"
                   id={`ds-${ds.id}`}
-                  checked={formData.dataStorages?.includes(ds.id)}
-                  onChange={(e) => handleArrayChange('dataStorages', ds.id, e.target.checked)}
+                  checked={formData.data_storages?.includes(ds.id)}
+                  onChange={(e) => handleArrayChange('data_storages', ds.id, e.target.checked)}
                 />
                 <label htmlFor={`ds-${ds.id}`}>{ds.name}</label>
               </div>
@@ -255,11 +259,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
             <h4>Требования к языкам</h4>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="languageRequirements.entryThreshold">Порог входа:</label>
+                <label htmlFor="language_requirements.entry_threshold">Порог входа:</label>
                 <select
-                  id="languageRequirements.entryThreshold"
-                  name="languageRequirements.entryThreshold"
-                  value={formData.languageRequirements?.entryThreshold || ''}
+                  id="language_requirements.entry_threshold"
+                  name="language_requirements.entry_threshold"
+                  value={formData.language_requirements?.entry_threshold || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -271,11 +275,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="languageRequirements.executionModel">Модель исполнения:</label>
+                <label htmlFor="language_requirements.execution_model">Модель исполнения:</label>
                 <select
-                  id="languageRequirements.executionModel"
-                  name="languageRequirements.executionModel"
-                  value={formData.languageRequirements?.executionModel || ''}
+                  id="language_requirements.execution_model"
+                  name="language_requirements.execution_model"
+                  value={formData.language_requirements?.execution_model || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -287,11 +291,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="languageRequirements.popularity">Популярность:</label>
+                <label htmlFor="language_requirements.popularity">Популярность:</label>
                 <select
-                  id="languageRequirements.popularity"
-                  name="languageRequirements.popularity"
-                  value={formData.languageRequirements?.popularity || ''}
+                  id="language_requirements.popularity"
+                  name="language_requirements.popularity"
+                  value={formData.language_requirements?.popularity || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -303,11 +307,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="languageRequirements.purpose">Назначение:</label>
+                <label htmlFor="language_requirements.purpose">Назначение:</label>
                 <select
-                  id="languageRequirements.purpose"
-                  name="languageRequirements.purpose"
-                  value={formData.languageRequirements?.purpose || ''}
+                  id="language_requirements.purpose"
+                  name="language_requirements.purpose"
+                  value={formData.language_requirements?.purpose || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -322,12 +326,12 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
             <h4>Требования к фреймворкам</h4>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="frameworkRequirements.isReactive" className="checkbox-label">
+                <label htmlFor="framework_requirements.is_reactive" className="checkbox-label">
                   <input
                     type="checkbox"
-                    id="frameworkRequirements.isReactive"
-                    name="frameworkRequirements.isReactive"
-                    checked={formData.frameworkRequirements?.isReactive || false}
+                    id="framework_requirements.is_reactive"
+                    name="framework_requirements.is_reactive"
+                    checked={formData.framework_requirements?.is_reactive || false}
                     onChange={(e) => {
                       const { name, checked } = e.target;
                       const path = name.split('.');
@@ -345,12 +349,12 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="frameworkRequirements.isActual" className="checkbox-label">
+                <label htmlFor="framework_requirements.is_actual" className="checkbox-label">
                   <input
                     type="checkbox"
-                    id="frameworkRequirements.isActual"
-                    name="frameworkRequirements.isActual"
-                    checked={formData.frameworkRequirements?.isActual || false}
+                    id="framework_requirements.is_actual"
+                    name="framework_requirements.is_actual"
+                    checked={formData.framework_requirements?.is_actual || false}
                     onChange={(e) => {
                       const { name, checked } = e.target;
                       const path = name.split('.');
@@ -368,11 +372,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="frameworkRequirements.tasksType">Тип задач:</label>
+                <label htmlFor="framework_requirements.tasks_type">Тип задач:</label>
                 <select
-                  id="frameworkRequirements.tasksType"
-                  name="frameworkRequirements.tasksType"
-                  value={formData.frameworkRequirements?.tasksType || ''}
+                  id="framework_requirements.tasks_type"
+                  name="framework_requirements.tasks_type"
+                  value={formData.framework_requirements?.tasks_type || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -387,11 +391,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
             <h4>Требования к хранилищам</h4>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="dataStorageRequirements.storageType">Тип хранилища:</label>
+                <label htmlFor="data_storage_requirements.storage_type">Тип хранилища:</label>
                 <select
-                  id="dataStorageRequirements.storageType"
-                  name="dataStorageRequirements.storageType"
-                  value={formData.dataStorageRequirements?.storageType || ''}
+                  id="data_storage_requirements.storage_type"
+                  name="data_storage_requirements.storage_type"
+                  value={formData.data_storage_requirements?.storage_type || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -403,11 +407,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="dataStorageRequirements.storageLocation">Локация:</label>
+                <label htmlFor="data_storage_requirements.storage_location">Локация:</label>
                 <select
-                  id="dataStorageRequirements.storageLocation"
-                  name="dataStorageRequirements.storageLocation"
-                  value={formData.dataStorageRequirements?.storageLocation || ''}
+                  id="data_storage_requirements.storage_location"
+                  name="data_storage_requirements.storage_location"
+                  value={formData.data_storage_requirements?.storage_location || ''}
                   onChange={handleChange}
                   className="form-select"
                 >
@@ -419,11 +423,11 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
               </div>
 
               <div className="form-group">
-                <label htmlFor="dataStorageRequirements.dataBaseType">Тип БД:</label>
+                <label htmlFor="data_storage_requirements.data_base_type">Тип БД:</label>
                 <select
-                  id="dataStorageRequirements.dataBaseType"
-                  name="dataStorageRequirements.dataBaseType"
-                  value={formData.dataStorageRequirements?.dataBaseType || ''}
+                  id="data_storage_requirements.data_base_type"
+                  name="data_storage_requirements.data_base_type"
+                  value={formData.data_storage_requirements?.data_base_type || ''}
                   onChange={handleChange}
                   className="form-select"
                 >

@@ -28,21 +28,17 @@ const FrameworkList: React.FC<FrameworkListProps> = ({ frameworks, onEdit, onDel
 
   const getTasksTypeBadge = (tasksType: TasksType) => {
     const colors: Record<TasksType, string> = {
-      [TasksType.CRUD]: 'primary',
-      [TasksType.REAL_TIME]: 'info',
-      [TasksType.HIGH_LOAD]: 'danger',
-      [TasksType.IO_INTENSIVE]: 'warning',
-      [TasksType.COMPUTATION_INTENSIVE]: 'secondary',
-      [TasksType.MACHINE_LEARNING]: 'success'
+      [TasksType.BACKEND]: 'primary',
+      [TasksType.FRONTEND]: 'info',
+      [TasksType.MOBILE]: 'danger',
+      [TasksType.DESKTOP]: 'warning'
     };
     
     const labels: Record<TasksType, string> = {
-      [TasksType.CRUD]: 'CRUD',
-      [TasksType.REAL_TIME]: 'Реал-тайм',
-      [TasksType.HIGH_LOAD]: 'Высокая нагрузка',
-      [TasksType.IO_INTENSIVE]: 'I/O операции',
-      [TasksType.COMPUTATION_INTENSIVE]: 'Вычисления',
-      [TasksType.MACHINE_LEARNING]: 'Машинное обучение'
+      [TasksType.BACKEND]: 'Бэкенд',
+      [TasksType.FRONTEND]: 'Фронтенд',
+      [TasksType.MOBILE]: 'Мобильная разраотка',
+      [TasksType.DESKTOP]: 'Десктопные приложения'
     };
     
     return (

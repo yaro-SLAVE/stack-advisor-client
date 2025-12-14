@@ -14,19 +14,13 @@ const DataStorageList: React.FC<DataStorageListProps> = ({ dataStorages, onEdit,
     const colors: Record<StorageType, string> = {
       [StorageType.RELATIONAL]: 'primary',
       [StorageType.DOCUMENT]: 'info',
-      [StorageType.KEY_VALUE]: 'warning',
-      [StorageType.COLUMNAR]: 'secondary',
-      [StorageType.GRAPH]: 'success',
-      [StorageType.TIME_SERIES]: 'danger'
+      [StorageType.KEY_VALUE]: 'warning'
     };
     
     const labels: Record<StorageType, string> = {
       [StorageType.RELATIONAL]: 'Реляционное',
       [StorageType.DOCUMENT]: 'Документное',
-      [StorageType.KEY_VALUE]: 'Ключ-значение',
-      [StorageType.COLUMNAR]: 'Колоночное',
-      [StorageType.GRAPH]: 'Графовое',
-      [StorageType.TIME_SERIES]: 'Временных рядов'
+      [StorageType.KEY_VALUE]: 'Ключ-значение'
     };
     
     return (
@@ -39,16 +33,12 @@ const DataStorageList: React.FC<DataStorageListProps> = ({ dataStorages, onEdit,
   const getStorageLocationBadge = (location: StorageLocation) => {
     const colors: Record<StorageLocation, string> = {
       [StorageLocation.LOCAL]: 'secondary',
-      [StorageLocation.CLOUD]: 'info',
-      [StorageLocation.HYBRID]: 'warning',
-      [StorageLocation.EDGE]: 'success'
+      [StorageLocation.REMOTE]: 'info'
     };
     
     const labels: Record<StorageLocation, string> = {
       [StorageLocation.LOCAL]: 'Локальное',
-      [StorageLocation.CLOUD]: 'Облачное',
-      [StorageLocation.HYBRID]: 'Гибридное',
-      [StorageLocation.EDGE]: 'Edge'
+      [StorageLocation.REMOTE]: 'Удаленое'
     };
     
     return (
@@ -61,16 +51,12 @@ const DataStorageList: React.FC<DataStorageListProps> = ({ dataStorages, onEdit,
   const getDatabaseTypeBadge = (type: DataBaseType) => {
     const colors: Record<DataBaseType, string> = {
       [DataBaseType.SQL]: 'primary',
-      [DataBaseType.NO_SQL]: 'warning',
-      [DataBaseType.NEW_SQL]: 'info',
-      [DataBaseType.IN_MEMORY]: 'success'
+      [DataBaseType.NO_SQL]: 'warning'
     };
     
     const labels: Record<DataBaseType, string> = {
       [DataBaseType.SQL]: 'SQL',
-      [DataBaseType.NO_SQL]: 'NoSQL',
-      [DataBaseType.NEW_SQL]: 'NewSQL',
-      [DataBaseType.IN_MEMORY]: 'In-Memory'
+      [DataBaseType.NO_SQL]: 'NoSQL'
     };
     
     return (
