@@ -11,7 +11,7 @@ interface RecommendationResultProps {
 }
 
 const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) => {
-  const { language_recommended_list, framework_recommended_list, dataStorage_recommended_list } = result;
+  const { language_recommended_list, framework_recommended_list, data_storage_recommended_list } = result;
 
   return (
     <div className="recommendation-result">
@@ -19,7 +19,7 @@ const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) =
       
       {language_recommended_list.length === 0 &&
        framework_recommended_list.length === 0 &&
-       dataStorage_recommended_list.length === 0 ? (
+       data_storage_recommended_list.length === 0 ? (
         <div className="no-results">
           <p>Нет подходящих рекомендаций. Попробуйте изменить параметры поиска.</p>
         </div>
@@ -70,9 +70,9 @@ const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) =
 
           <div className="recommendation-section">
             <h3>Хранилища данных</h3>
-            {dataStorage_recommended_list.length > 0 ? (
+            {data_storage_recommended_list.length > 0 ? (
               <div className="cards-grid">
-                {dataStorage_recommended_list.map((storage: DataStorage) => (
+                {data_storage_recommended_list.map((storage: DataStorage) => (
                   <div key={storage.id} className="card storage-card">
                     <h4>{storage.name}</h4>
                     <div className="card-content">

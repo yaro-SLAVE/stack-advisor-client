@@ -111,7 +111,7 @@ export type DataStorage = {
 export type ProjectRecommendedResponse = {
   language_recommended_list: Language[];
   framework_recommended_list: Framework[];
-  dataStorage_recommended_list: DataStorage[];
+  data_storage_recommended_list: DataStorage[];
 };
 
 export type LanguagesListResponse = Language;

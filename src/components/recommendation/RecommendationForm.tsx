@@ -51,9 +51,9 @@ const RecommendationForm: React.FC<RecommendationFormProps> = ({ onSubmit }) => 
     const loadData = async () => {
       try {
         const [langs, fws, dss] = await Promise.all([
-          (await axios.get('/api/language/')).data,
-          (await axios.get('/api/framework/')).data,
-          (await axios.get('/api/datastorage/')).data
+          (await axios.get('/api/language')).data,
+          (await axios.get('/api/framework')).data,
+          (await axios.get('/api/datastorage')).data
         ]);
         setLanguages(langs);
         setFrameworks(fws);
