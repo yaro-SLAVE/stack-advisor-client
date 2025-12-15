@@ -176,3 +176,82 @@ export type ProjectRequirementsRequest = {
   framework_requirements?: FrameworkRequirementsRequest;
   data_storage_requirements?: DataStorageRequirementsRequest;
 }
+
+export type RecommendationExplanation = {
+  id: number;
+  sessionId: string;
+  recommendationType: 'LANGUAGE' | 'FRAMEWORK' | 'DATA_STORAGE';
+  itemId: number;
+  itemName: string;
+  finalScore: number;
+  explanations: string[];
+  createdAt: string;
+}
+
+export type RuleExecutionLog = {
+  id: number;
+  sessionId: string;
+  ruleName: string;
+  timestamp: string;
+  objectsActivated: string;
+  scoreChanges: string;
+  executionContext: Record<string, any>;
+}
+
+export type SessionSummary = {
+  sessionId: string;
+  totalExplanations: number;
+  totalRulesExecuted: number;
+  sessionCreated: string;
+  explanationsByType: Record<string, number>;
+  rulesExecuted: Record<string, number>;
+  averageRecommendationScore: string;
+  topRecommendations: TopRecommendation[];
+  minScore?: string;
+  maxScore?: string;
+  medianScore?: string;
+}
+
+export type TopRecommendation = {
+  type: string;
+  name: string;
+  score: string;
+  id?: number;
+  explanationCount?: number;
+}
+
+export type ApiResponse<T> = {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
+  timestamp?: string;
+}
+
+export type SessionExplanationsResponse = {
+  success: boolean;
+  sessionId: string;
+  timestamp: string;
+  explanations: RecommendationExplanation[];
+  ruleExecutionLogs: RuleExecutionLog[];
+  summary: SessionSummary;
+  totalItems: number;
+}
+
+export type RecentSessionsResponse = {
+  success: boolean;
+  sessions: Array<{
+    sessionId: string;
+    timestamp: string;
+    explanationCount: number;
+    ruleCount: number;
+  }>;
+  total: number;
+}
+
+export type FilterOptions = {
+  recommendationType?: string;
+  minScore?: number;
+  maxScore?: number;
+  searchTerm?: string;
+}

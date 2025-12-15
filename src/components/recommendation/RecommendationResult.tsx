@@ -11,15 +11,15 @@ interface RecommendationResultProps {
 }
 
 const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) => {
-  const { languageRecommendedList, frameworkRecommendedList, dataStorageRecommendedList } = result;
+  const { language_recommended_list, framework_recommended_list, dataStorage_recommended_list } = result;
 
   return (
     <div className="recommendation-result">
       <h2>Рекомендованный стек технологий</h2>
       
-      {languageRecommendedList.length === 0 &&
-       frameworkRecommendedList.length === 0 &&
-       dataStorageRecommendedList.length === 0 ? (
+      {language_recommended_list.length === 0 &&
+       framework_recommended_list.length === 0 &&
+       dataStorage_recommended_list.length === 0 ? (
         <div className="no-results">
           <p>Нет подходящих рекомендаций. Попробуйте изменить параметры поиска.</p>
         </div>
@@ -27,9 +27,9 @@ const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) =
         <>
           <div className="recommendation-section">
             <h3>Языки программирования</h3>
-            {languageRecommendedList.length > 0 ? (
+            {language_recommended_list.length > 0 ? (
               <div className="cards-grid">
-                {languageRecommendedList.map(language => (
+                {language_recommended_list.map((language: Language) => (
                   <div key={language.id} className="card language-card">
                     <h4>{language.name}</h4>
                     <div className="card-content">
@@ -48,9 +48,9 @@ const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) =
 
           <div className="recommendation-section">
             <h3>Фреймворки</h3>
-            {frameworkRecommendedList.length > 0 ? (
+            {framework_recommended_list.length > 0 ? (
               <div className="cards-grid">
-                {frameworkRecommendedList.map(framework => (
+                {framework_recommended_list.map((framework: Framework) => (
                   <div key={framework.id} className="card framework-card">
                     <h4>{framework.name}</h4>
                     <div className="card-content">
@@ -70,9 +70,9 @@ const RecommendationResult: React.FC<RecommendationResultProps> = ({ result }) =
 
           <div className="recommendation-section">
             <h3>Хранилища данных</h3>
-            {dataStorageRecommendedList.length > 0 ? (
+            {dataStorage_recommended_list.length > 0 ? (
               <div className="cards-grid">
-                {dataStorageRecommendedList.map(storage => (
+                {dataStorage_recommended_list.map((storage: DataStorage) => (
                   <div key={storage.id} className="card storage-card">
                     <h4>{storage.name}</h4>
                     <div className="card-content">

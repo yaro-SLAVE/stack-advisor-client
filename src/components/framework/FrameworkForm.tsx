@@ -31,7 +31,7 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
   useEffect(() => {
     const loadLanguages = async () => {
       try {
-        const data: Language[] = await axios.get('/api/language/');
+        const data: Language[] = await axios.get('/api/language');
         setLanguages(data);
       } catch (error) {
         console.error('Failed to load languages:', error);

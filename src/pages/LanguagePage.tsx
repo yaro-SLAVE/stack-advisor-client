@@ -17,7 +17,7 @@ const LanguagePage: React.FC = () => {
   const loadLanguages = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/language/');
+      const response = await axios.get('/api/language');
       setLanguages(response.data);
       setError(null);
     } catch (err) {
@@ -30,7 +30,7 @@ const LanguagePage: React.FC = () => {
 
   const handleCreateLanguage = async (data: LanguageCreatingRequest) => {
     try {
-      const newLanguage: Language = await axios.post('/api/language/', data)
+      const newLanguage: Language = await axios.post('/api/language', data)
       setLanguages(prev => [...prev, newLanguage]);
       setShowForm(false);
       setError(null);

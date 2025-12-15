@@ -14,6 +14,7 @@ const Header: React.FC = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/recommendation">Подбор технологий</Nav.Link>
+            <Nav.Link as={Link} to="/explanation">Объяснения</Nav.Link>
             <Nav.Link as={Link} to="/languages">Языки</Nav.Link>
             <Nav.Link as={Link} to="/frameworks">Фреймворки</Nav.Link>
             <Nav.Link as={Link} to="/datastorages">Хранилища</Nav.Link>

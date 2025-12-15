@@ -17,7 +17,7 @@ const DataStoragesPage: React.FC = () => {
   const loadDataStorages = async () => {
     try {
       setLoading(true);
-      const r = await axios.get('/api/datastorage/');
+      const r = await axios.get('/api/datastorage');
       setDataStorages(r.data);
       setError(null);
     } catch (err) {
@@ -30,7 +30,7 @@ const DataStoragesPage: React.FC = () => {
 
   const handleCreateDataStorage = async (data: DataStorageCreatingRequest) => {
     try {
-      const newDataStorage: DataStorage = await axios.post('/api/datastorage/', data);
+      const newDataStorage: DataStorage = await axios.post('/api/datastorage', data);
       setDataStorages(prev => [...prev, newDataStorage]);
       setShowForm(false);
       setError(null);

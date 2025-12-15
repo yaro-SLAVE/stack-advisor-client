@@ -16,7 +16,7 @@ const RecommendationPage: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
-      const r = await axios.post('/api/recommended/', data);
+      const r = await axios.post('/api/recommended', data);
       setResult(r.data);
     } catch (err) {
       setError('Не удалось получить рекомендации');

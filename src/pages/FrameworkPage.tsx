@@ -17,7 +17,7 @@ const FrameworkPage: React.FC = () => {
   const loadFrameworks = async () => {
     try {
       setLoading(true);
-      const r = await axios.get('/api/framework/');
+      const r = await axios.get('/api/framework');
       setFrameworks(r.data);
       setError(null);
       await loadFrameworks();

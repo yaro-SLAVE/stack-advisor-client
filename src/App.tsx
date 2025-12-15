@@ -9,6 +9,7 @@ import RecommendationPage from './pages/RecommendationPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Dashboard } from './pages/Dashboard';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recommendation" element={<RecommendationPage />} />
+            <Route path="/explanation" element={<Dashboard />} />
             <Route path="/languages" element={<LanguagePage />} />
             <Route path="/frameworks" element={<FrameworkPage />} />
             <Route path="/datastorages" element={<DataStoragePage />} />
