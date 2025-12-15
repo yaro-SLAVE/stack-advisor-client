@@ -60,10 +60,10 @@ const DataStorageForm: React.FC<DataStorageFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="storageType">Тип хранилища:</label>
+        <label htmlFor="storage_type">Тип хранилища:</label>
         <select
-          id="storageType"
-          name="storageType"
+          id="storage_type"
+          name="storage_type"
           value={formData.storage_type}
           onChange={handleChange}
           className="form-select"
@@ -77,10 +77,10 @@ const DataStorageForm: React.FC<DataStorageFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="storageLocation">Локация хранилища:</label>
+        <label htmlFor="storage_location">Локация хранилища:</label>
         <select
-          id="storageLocation"
-          name="storageLocation"
+          id="storage_location"
+          name="storage_location"
           value={formData.storage_location}
           onChange={handleChange}
           className="form-select"
@@ -94,10 +94,10 @@ const DataStorageForm: React.FC<DataStorageFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="dataBaseType">Тип базы данных:</label>
+        <label htmlFor="data_base_type">Тип базы данных:</label>
         <select
-          id="dataBaseType"
-          name="dataBaseType"
+          id="data_base_type"
+          name="data_base_type"
           value={formData.data_base_type}
           onChange={handleChange}
           className="form-select"

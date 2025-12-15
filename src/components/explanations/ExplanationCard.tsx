@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { RecommendationExplanation } from '../../api/types';
 import { formatScore, getTypeIcon, getTypeColor } from '../../utils/formatters';
 
@@ -14,6 +14,28 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
   onToggle
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
+  const [parsedExplanations, setParsedExplanations] = useState<string[]>([]);
+
+  useEffect(() => {
+    const parseExplanations = () => {
+      try {
+        if (typeof explanation.explanations === 'string') {
+          const parsed = JSON.parse(explanation.explanations);
+          setParsedExplanations(Array.isArray(parsed) ? parsed : [parsed]);
+        } else if (Array.isArray(explanation.explanations)) {
+          setParsedExplanations(explanation.explanations);
+        } else {
+          console.warn('Unexpected explanations format:', explanation.explanations);
+          setParsedExplanations([]);
+        }
+      } catch (error) {
+        console.error('Failed to parse explanations:', error);
+        setParsedExplanations(['Не удалось загрузить объяснения']);
+      }
+    };
+
+    parseExplanations();
+  }, [explanation.explanations]);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
@@ -58,7 +80,7 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
                 })}
               </span>
               <span className="mx-2">•</span>
-              <span>{explanation.explanations.length} причин</span>
+              <span>{parsedExplanations.length} причин</span>
             </div>
           </div>
           
@@ -84,16 +106,20 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
       {isExpanded && (
         <div className="border-t border-gray-200 px-4 py-3 bg-gray-50">
           <h4 className="font-medium text-gray-700 mb-2">Причины выбора:</h4>
-          <ul className="space-y-2">
-            {explanation.explanations.map((exp, index) => (
-              <li key={index} className="flex items-start">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs font-medium mr-2 mt-0.5 flex-shrink-0">
-                  {index + 1}
-                </span>
-                <span className="text-gray-700">{exp}</span>
-              </li>
-            ))}
-          </ul>
+          {parsedExplanations.length > 0 ? (
+            <ul className="space-y-2">
+              {parsedExplanations.map((exp, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs font-medium mr-2 mt-0.5 flex-shrink-0">
+                    {index + 1}
+                  </span>
+                  <span className="text-gray-700">{exp}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-500 italic">Нет доступных объяснений</p>
+          )}
           
           <div className="mt-4 pt-3 border-t border-gray-200">
             <div className="text-sm text-gray-500">

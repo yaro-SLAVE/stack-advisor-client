@@ -20,7 +20,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ sessionId }) => {
 
   const loadStats = async () => {
     try {
-      const r = await axios.get(`/api//explanations/session/${sessionId}`);
+      const r = await axios.get(`/api/explanations/session/${sessionId}`);
       const explanations = r.data.explanations || [];
       
       const languages = explanations.filter((e: { recommendationType: string; }) => e.recommendationType === 'LANGUAGE');

@@ -62,10 +62,10 @@ const LanguageForm: React.FC<LanguageFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="entryThreshold">Порог входа:</label>
+        <label htmlFor="entry_threshold">Порог входа:</label>
         <select
-          id="entryThreshold"
-          name="entryThreshold"
+          id="entry_threshold"
+          name="entry_threshold"
           value={formData.entry_threshold}
           onChange={handleChange}
           className="form-select"
@@ -79,10 +79,10 @@ const LanguageForm: React.FC<LanguageFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="executionModel">Модель исполнения:</label>
+        <label htmlFor="execution_model">Модель исполнения:</label>
         <select
-          id="executionModel"
-          name="executionModel"
+          id="execution_model"
+          name="execution_model"
           value={formData.execution_model}
           onChange={handleChange}
           className="form-select"

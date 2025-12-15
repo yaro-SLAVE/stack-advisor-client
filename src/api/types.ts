@@ -66,7 +66,7 @@ export enum TasksType {
 };
 
 export enum StorageType {
-  RELATIONAL = 'relational',
+  RELATIONAL = 'relation',
   DOCUMENT = 'document',
   KEY_VALUE = 'key-value'
 };

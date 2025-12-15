@@ -28,7 +28,7 @@ export const SessionExplanations: React.FC<SessionExplanationsProps> = ({ sessio
     setLoading(true);
     setError(null);
     try {
-      const r = await axios.get(`/api/explanations/session/${sessionId}/`);
+      const r = await axios.get(`/api/explanations/session/${sessionId}`);
       setData(r.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Неизвестная ошибка');
@@ -66,7 +66,6 @@ export const SessionExplanations: React.FC<SessionExplanationsProps> = ({ sessio
 
   return (
     <div className="space-y-6">
-      {/* Заголовок и фильтры */}
       <div className="bg-white rounded-lg shadow border border-gray-200 p-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
@@ -87,7 +86,6 @@ export const SessionExplanations: React.FC<SessionExplanationsProps> = ({ sessio
           </div>
         </div>
 
-        {/* Фильтры */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Тип</label>

@@ -31,8 +31,8 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
   useEffect(() => {
     const loadLanguages = async () => {
       try {
-        const data: Language[] = await axios.get('/api/language');
-        setLanguages(data);
+        const r = await axios.get('/api/language');
+        setLanguages(r.data);
       } catch (error) {
         console.error('Failed to load languages:', error);
       }
@@ -106,11 +106,11 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="isReactive" className="checkbox-label">
+        <label htmlFor="is_reactive" className="checkbox-label">
           <input
             type="checkbox"
-            id="isReactive"
-            name="isReactive"
+            id="is_reactive"
+            name="is_reactive"
             checked={formData.is_reactive}
             onChange={handleChange}
           />
@@ -119,11 +119,11 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="lastUpdatedAt">Дата последнего обновления:</label>
+        <label htmlFor="last_updated_at">Дата последнего обновления:</label>
         <input
           type="date"
-          id="lastUpdatedAt"
-          name="lastUpdatedAt"
+          id="last_updated_at"
+          name="last_updated_at"
           value={formData.last_updated_at}
           onChange={handleChange}
           className="form-input"
@@ -132,10 +132,10 @@ const FrameworkForm: React.FC<FrameworkFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="tasksType">Тип задач:</label>
+        <label htmlFor="tasks_type">Тип задач:</label>
         <select
-          id="tasksType"
-          name="tasksType"
+          id="tasks_type"
+          name="tasks_type"
           value={formData.tasks_type}
           onChange={handleChange}
           className="form-select"

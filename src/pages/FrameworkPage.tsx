@@ -20,7 +20,6 @@ const FrameworkPage: React.FC = () => {
       const r = await axios.get('/api/framework');
       setFrameworks(r.data);
       setError(null);
-      await loadFrameworks();
     } catch (err) {
       setError('Не удалось загрузить фреймворки');
       console.error(err);
@@ -35,6 +34,7 @@ const FrameworkPage: React.FC = () => {
       setFrameworks(prev => [...prev, newFramework]);
       setShowForm(false);
       setError(null);
+      await loadFrameworks();
     } catch (err) {
       setError('Не удалось создать фреймворк');
       console.error(err);
