@@ -31,7 +31,6 @@ export const RuleExecutionLogComponent: React.FC<RuleExecutionLogProps> = ({ log
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-lg">⚡</span>
               <h3 className="font-medium text-gray-900">{log.ruleName}</h3>
               <span className="ml-auto text-xs text-gray-500">
                 {formatDate(log.timestamp)}
@@ -51,7 +50,7 @@ export const RuleExecutionLogComponent: React.FC<RuleExecutionLogProps> = ({ log
               <button className="text-xs text-blue-600 hover:text-blue-800">
                 {showDetails ? 'Скрыть детали' : 'Показать детали'}
               </button>
-              <svg
+              {/* <svg
                 className={`w-4 h-4 text-gray-500 transition-transform ${
                   showDetails ? 'transform rotate-180' : ''
                 }`}
@@ -60,7 +59,7 @@ export const RuleExecutionLogComponent: React.FC<RuleExecutionLogProps> = ({ log
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              </svg> */}
             </div>
           </div>
         </div>

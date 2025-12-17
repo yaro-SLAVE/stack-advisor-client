@@ -141,7 +141,6 @@ export const SessionExplanations: React.FC<SessionExplanationsProps> = ({ sessio
           </div>
         </div>
 
-        {/* Табы */}
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8">
             <button
@@ -182,7 +181,6 @@ export const SessionExplanations: React.FC<SessionExplanationsProps> = ({ sessio
         <div className="space-y-4">
           {filteredExplanations.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-lg shadow border border-gray-200">
-              <div className="text-gray-400 text-6xl mb-4">🔍</div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">Ничего не найдено</h3>
               <p className="text-gray-600">Попробуйте изменить параметры фильтрации</p>
             </div>

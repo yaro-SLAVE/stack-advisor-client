@@ -38,7 +38,7 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({ sessionId }) => 
 
   return (
     <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow border border-blue-100 p-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">📊 Сводка по сессии {sessionId}</h2>
+      <h2 className="text-xl font-bold text-gray-900 mb-4">Сводка по сессии {sessionId}</h2>
       
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
         <div className="bg-white rounded-lg p-4 shadow-sm">
@@ -89,7 +89,6 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({ sessionId }) => 
         </div>
       </div>
 
-      {/* Топ рекомендаций */}
       {summary.topRecommendations && summary.topRecommendations.length > 0 && (
         <div>
           <h3 className="font-medium text-gray-900 mb-3">Топ рекомендаций</h3>
@@ -102,8 +101,8 @@ export const SessionSummary: React.FC<SessionSummaryProps> = ({ sessionId }) => 
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center">
                     <span className="text-2xl mr-2">
-                      {rec.type === 'LANGUAGE' ? '💻' :
-                       rec.type === 'FRAMEWORK' ? '⚙️' : '💾'}
+                      {rec.type === 'LANGUAGE' ? '' :
+                       rec.type === 'FRAMEWORK' ? '' : ''}
                     </span>
                     <span className="font-medium text-gray-900">{rec.name}</span>
                   </div>

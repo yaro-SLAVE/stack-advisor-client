@@ -24,8 +24,8 @@ export const SessionSelector: React.FC<SessionSelectorProps> = ({
     setLoading(true);
     setError(null);
     try {
-      const r = await axios.get('/api/explanations/recent-sessions?limit=5&offset=0');
-      setRecentSessions(r.data.sessions || []);
+      const r = await axios.get('/api/explanations/recent-sessions');
+      setRecentSessions(r.data || []);
     } catch (err) {
       setError('Не удалось загрузить последние сессии');
       console.error(err);
@@ -46,7 +46,6 @@ export const SessionSelector: React.FC<SessionSelectorProps> = ({
       <div className="bg-white rounded-lg shadow p-4">
         <h3 className="text-lg font-medium text-gray-900 mb-3">Выбор сессии</h3>
         
-        {/* Ручной ввод */}
         <form onSubmit={handleManualSubmit} className="mb-4">
           <label htmlFor="sessionId" className="block text-sm font-medium text-gray-700 mb-1">
             Введите ID сессии
@@ -69,7 +68,6 @@ export const SessionSelector: React.FC<SessionSelectorProps> = ({
           </div>
         </form>
 
-        {/* Недавние сессии */}
         <div>
           <h4 className="text-sm font-medium text-gray-700 mb-2">Недавние сессии</h4>
           {loading ? (
@@ -92,13 +90,13 @@ export const SessionSelector: React.FC<SessionSelectorProps> = ({
                 >
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Сессия {session.sessionId}</span>
-                    <span className="text-xs text-gray-500">
+                    {/* <span className="text-xs text-gray-500">
                       {session.explanationCount} объяснений
-                    </span>
+                    </span> */}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  {/* <div className="text-xs text-gray-500 mt-1">
                     {new Date(session.timestamp).toLocaleDateString()}
-                  </div>
+                  </div> */}
                 </button>
               ))}
             </div>

@@ -43,7 +43,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ sessionId }) => {
 
   return (
     <div className="bg-white rounded-lg shadow border border-gray-200 p-4">
-      <h3 className="font-medium text-gray-900 mb-4">📈 Статистика сессии</h3>
+      <h3 className="font-medium text-gray-900 mb-4">Статистика сессии</h3>
       
       <div className="space-y-3">
         <div className="flex items-center justify-between">
