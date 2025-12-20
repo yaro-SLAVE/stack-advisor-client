@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { RecommendationExplanation } from '../../api/types';
-import { formatScore, getTypeIcon, getTypeColor } from '../../utils/formatters';
+import { formatScore, getTypeColor } from '../../utils/formatters';
 
 interface ExplanationCardProps {
   explanation: RecommendationExplanation;
@@ -53,7 +53,6 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">{getTypeIcon(explanation.recommendationType)}</span>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${scoreColor}`}>
                 {explanation.recommendationType.replace('_', ' ')}
               </span>
@@ -71,9 +70,6 @@ export const ExplanationCard: React.FC<ExplanationCardProps> = ({
             
             <div className="text-sm text-gray-600">
               <span className="inline-flex items-center gap-1">
-                {/* <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg> */}
                 {new Date(explanation.createdAt).toLocaleDateString('ru-RU', {
                   hour: '2-digit',
                   minute: '2-digit'

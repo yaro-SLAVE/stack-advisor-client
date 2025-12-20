@@ -21,19 +21,6 @@ export const getScoreColor = (score: number): string => {
   return 'bg-red-100 text-red-800';
 };
 
-export const getTypeIcon = (type: string): string => {
-  switch (type) {
-    case 'LANGUAGE':
-      return '💻';
-    case 'FRAMEWORK':
-      return '⚙️';
-    case 'DATA_STORAGE':
-      return '💾';
-    default:
-      return '📄';
-  }
-};
-
 export const getTypeColor = (type: string): string => {
   switch (type) {
     case 'LANGUAGE':

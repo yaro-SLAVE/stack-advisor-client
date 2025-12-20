@@ -1,34 +1,38 @@
-// Enums
 export enum AppType {
     WEB = 'web',
     ANDROID = 'android',
     IOS = 'ios',
-    DESKTOP = 'desktop'
+    DESKTOP = 'desktop',
+    UNKNOWN = 'unknown'
 };
 
 export enum TimeToShow {
     FAST = 'fast',
     MEDIUM = 'medium',
-    SLOW = 'slow'
+    SLOW = 'slow',
+    UNKNOWN = 'unknown'
 };
 
 export enum ProjectType {
     PET = 'pet',
     RESEARCH = 'research',
-    COMMERCIAL = 'commercial'
+    COMMERCIAL = 'commercial',
+    UNKNOWN = 'unknown'
 };
 
 export enum TeamSize {
     MICRO = 'micro', 
     SMALL = 'small',
     MEDIUM = 'medium',
-    BIG = 'big'
+    BIG = 'big',
+    UNKNOWN = 'unknown'
 };
 
 export enum Scale {
     COMPLEX = 'complex',
     EASY = 'easy',
-    HARD = 'hard'
+    HARD = 'hard',
+    UNKNOWN = 'unknown'
 };
 
 export enum EntryThreshold {
@@ -55,7 +59,6 @@ export enum Purpose {
     WEB_FRONTEND = 'web_frontend',
     MOBILE = 'mobile',
     DESKTOP = 'desktop',
-    DATA_SCIENCE = 'data_science',
 };
 
 export enum TasksType {

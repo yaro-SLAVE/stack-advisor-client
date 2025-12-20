@@ -81,8 +81,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ languages, onEdit, onDelete
       [Purpose.WEB_BACKEND]: 'primary',
       [Purpose.WEB_FRONTEND]: 'info',
       [Purpose.MOBILE]: 'success',
-      [Purpose.DESKTOP]: 'warning',
-      [Purpose.DATA_SCIENCE]: 'secondary'
+      [Purpose.DESKTOP]: 'warning'
     };
     
     const labels: Record<Purpose, string> = {
@@ -90,8 +89,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ languages, onEdit, onDelete
       [Purpose.WEB_BACKEND]: 'Веб-бэкенд',
       [Purpose.WEB_FRONTEND]: 'Веб-фронтенд',
       [Purpose.MOBILE]: 'Мобильная',
-      [Purpose.DESKTOP]: 'Десктопная',
-      [Purpose.DATA_SCIENCE]: 'Анализ данных',
+      [Purpose.DESKTOP]: 'Десктопная'
     };
     
     return (
@@ -148,7 +146,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ languages, onEdit, onDelete
                     onClick={() => onEdit(language)}
                     title="Редактировать"
                   >
-                    <i className="edit-icon">✏️</i>
+                    Редактировать
                   </button>
                 )}
                 {onDelete && (
@@ -157,7 +155,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ languages, onEdit, onDelete
                     onClick={() => onDelete(language.id)}
                     title="Удалить"
                   >
-                    <i className="delete-icon">🗑️</i>
+                    Удалить
                   </button>
                 )}
               </div>
