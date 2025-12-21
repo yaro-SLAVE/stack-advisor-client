@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState, useCallback } from 'react';
 import { 
   Container, 
@@ -55,7 +54,7 @@ const App: React.FC = () => {
           }} 
         />
         <Typography variant="h3" component="h1" gutterBottom fontWeight="bold">
-          🧠 Экспертная система подбора технологий
+          Экспертная система подбора технологий
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2 }}>
           Фреймовая модель знаний с подсистемой объяснений на основе Drools
@@ -123,19 +122,10 @@ const App: React.FC = () => {
               <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
                 Заполните форму параметров проекта для получения рекомендаций по технологиям
               </Typography>
-              <Alert severity="info">
-                Система проанализирует проект с использованием 40+ правил экспертной системы
-              </Alert>
             </Paper>
           )}
         </Grid>
       </Grid>
-
-      <Box sx={{ mt: 4, pt: 3, borderTop: 1, borderColor: 'divider' }}>
-        <Typography variant="body2" color="text.secondary" align="center">
-          Экспертная система для курсовой работы | Фреймовая модель знаний | Подсистема объяснений
-        </Typography>
-      </Box>
     </Container>
   );
 };

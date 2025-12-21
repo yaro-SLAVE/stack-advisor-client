@@ -11,9 +11,8 @@ export const PROJECT_TYPES = [
   { value: ProjectType.WEB, label: 'Веб-приложение' },
   { value: ProjectType.MOBILE, label: 'Мобильное приложение' },
   { value: ProjectType.DESKTOP, label: 'Десктоп приложение' },
-  { value: ProjectType.AI_ML, label: 'AI/ML проект' },
-  { value: ProjectType.DEVOPS, label: 'DevOps инфраструктура' },
-  { value: ProjectType.GAME, label: 'Игра' }
+  { value: ProjectType.GAME, label: 'Игра' },
+  { value: ProjectType.UNKNOWN, label: 'Без понятия' }
 ];
 
 export const TEAM_EXPERIENCES = [
@@ -54,6 +53,5 @@ export const INITIAL_FORM_DATA: ProjectFormData = {
   timeToMarket: TimeToMarket.NORMAL,
   needHighLoad: false,
   needRealTime: false,
-  needHighSecurity: false,
-  teamMembers: 5
+  needHighSecurity: false
 };

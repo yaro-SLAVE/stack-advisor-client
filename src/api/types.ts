@@ -1,11 +1,9 @@
-// src/services/types.ts
 export enum ProjectType {
   WEB = 'WEB',
   MOBILE = 'MOBILE',
   DESKTOP = 'DESKTOP',
-  AI_ML = 'AI_ML',
-  DEVOPS = 'DEVOPS',
-  GAME = 'GAME'
+  GAME = 'GAME',
+  UNKNOWN = 'UNKNOWN'
 }
 
 export enum TeamExperience {
@@ -42,10 +40,10 @@ export enum TechnologyCategory {
   BACKEND = 'BACKEND',
   FRONTEND = 'FRONTEND',
   DATABASE = 'DATABASE',
-  DEVOPS = 'DEVOPS',
-  MOBILE = 'MOBILE',
-  AI_ML = 'AI_ML',
-  TESTING = 'TESTING'
+  MOBILE_HYBRID = 'MOBILE_HYBRID',
+  IOS = 'IOS',
+  ANDROID = 'ANDROID',
+  UNKNOWN = 'UNKNOWN',
 }
 
 export enum LicenseType {
@@ -140,7 +138,6 @@ export type ProjectFormData = {
   needHighLoad: boolean;
   needRealTime: boolean;
   needHighSecurity: boolean;
-  teamMembers: number;
 }
 
 export type ApiError = {

@@ -10,25 +10,12 @@ export const getCategoryLabel = (category: TechnologyCategory): string => {
     [TechnologyCategory.BACKEND]: 'Бэкенд',
     [TechnologyCategory.FRONTEND]: 'Фронтенд',
     [TechnologyCategory.DATABASE]: 'Базы данных',
-    [TechnologyCategory.DEVOPS]: 'DevOps',
-    [TechnologyCategory.MOBILE]: 'Мобильная разработка',
-    [TechnologyCategory.AI_ML]: 'AI/ML',
-    [TechnologyCategory.TESTING]: 'Тестирование'
+    [TechnologyCategory.MOBILE_HYBRID]: 'Кроссплатформерная мобильная разработка',
+    [TechnologyCategory.IOS]: 'IOS',
+    [TechnologyCategory.ANDROID]: 'Android',
+    [TechnologyCategory.UNKNOWN]: 'Неизвестно',
   };
   return labels[category] || category;
-};
-
-export const getCategoryIcon = (category: TechnologyCategory): string => {
-  const icons: Record<TechnologyCategory, string> = {
-    [TechnologyCategory.BACKEND]: '⚙️',
-    [TechnologyCategory.FRONTEND]: '🎨',
-    [TechnologyCategory.DATABASE]: '💾',
-    [TechnologyCategory.DEVOPS]: '🚀',
-    [TechnologyCategory.MOBILE]: '📱',
-    [TechnologyCategory.AI_ML]: '🤖',
-    [TechnologyCategory.TESTING]: '🧪'
-  };
-  return icons[category] || '🔧';
 };
 
 export const getStatusLabel = (status: RecommendationStatus): string => {

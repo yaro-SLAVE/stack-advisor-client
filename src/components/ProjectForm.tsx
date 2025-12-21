@@ -1,4 +1,3 @@
-// src/components/ProjectForm.tsx
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import {
   Box,
@@ -186,28 +185,6 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, loading }) =
                 ))}
               </Select>
             </FormControl>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Typography gutterBottom>
-              Количество членов команды: <strong>{formData.teamMembers}</strong>
-            </Typography>
-            <Slider
-              value={formData.teamMembers}
-              onChange={handleSliderChange}
-              min={1}
-              max={50}
-              marks={[
-                { value: 1, label: '1' },
-                { value: 10, label: '10' },
-                { value: 20, label: '20' },
-                { value: 30, label: '30' },
-                { value: 40, label: '40' },
-                { value: 50, label: '50' }
-              ]}
-              valueLabelDisplay="auto"
-              disabled={loading}
-            />
           </Grid>
 
           <Grid item xs={12}>

@@ -1,4 +1,4 @@
-// src/components/ResultsPanel.tsx
+
 import React from 'react';
 import {
   Paper,
@@ -56,7 +56,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
   onShowExplanation,
   showExplanation 
 }) => {
-  // Проверяем наличие результатов
   if (!results) {
     return (
       <Paper elevation={3} sx={{ p: 3 }}>
@@ -69,7 +68,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
 
   const { recommendations = [], rulesFired = 0, sessionId = 'Нет данных', requirements } = results;
 
-  // Преобразуем recommendations в массив, если это необходимо
   const recommendationsArray: TechnologyRecommendation[] = 
     Array.isArray(recommendations) ? recommendations : [];
 
@@ -100,14 +98,11 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
       case TechnologyCategory.BACKEND: return <CodeIcon />;
       case TechnologyCategory.FRONTEND: return <WebIcon />;
       case TechnologyCategory.DATABASE: return <DatabaseIcon />;
-      case TechnologyCategory.DEVOPS: return <CloudIcon />;
       default: return <PsychologyIcon />;
     }
   };
 
-  // Сортируем рекомендации
   const sortedRecommendations = [...recommendationsArray].sort((a, b) => {
-    // Сначала PRIMARY, затем ALTERNATIVE, затем NOT_RECOMMENDED
     const statusOrder = {
       [RecommendationStatus.PRIMARY]: 1,
       [RecommendationStatus.ALTERNATIVE]: 2,
@@ -117,11 +112,9 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
     const statusDiff = statusOrder[a.status] - statusOrder[b.status];
     if (statusDiff !== 0) return statusDiff;
     
-    // Затем по уверенности (по убыванию)
     return b.confidence - a.confidence;
   });
 
-  // Фильтруем рекомендации по статусу
   const primaryRecommendations = sortedRecommendations.filter(
     r => r.status === RecommendationStatus.PRIMARY
   );
@@ -132,19 +125,16 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
     r => r.status === RecommendationStatus.NOT_RECOMMENDED
   );
 
-  // Получаем уникальные категории
   const categories = Array.from(
     new Set(sortedRecommendations.map(r => r.technology?.category).filter(Boolean))
   ) as TechnologyCategory[];
 
-  // Вычисляем среднюю уверенность
   const getAverageConfidence = (recs: TechnologyRecommendation[]) => {
     if (recs.length === 0) return 0;
     const sum = recs.reduce((acc, rec) => acc + (rec.confidence || 0), 0);
     return sum / recs.length;
   };
 
-  // Вспомогательная функция для безопасного доступа к свойствам
   const safeGet = <T,>(value: T | undefined, defaultValue: T): T => {
     return value !== undefined ? value : defaultValue;
   };
@@ -185,7 +175,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
         </Box>
       </Box>
 
-      {/* Статистика */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
         <Grid item xs={12} md={3}>
           <Card>
@@ -240,7 +229,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
         </Grid>
       </Grid>
 
-      {/* Категории */}
       {categories.length > 0 && (
         <Box sx={{ mb: 3 }}>
           <Typography variant="h6" gutterBottom>
@@ -265,7 +253,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
         </Box>
       )}
 
-      {/* Основные рекомендации */}
       {primaryRecommendations.length > 0 && (
         <Box sx={{ mb: 4 }}>
           <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -342,7 +329,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
         </Box>
       )}
 
-      {/* Альтернативные рекомендации */}
       {alternativeRecommendations.length > 0 && (
         <Box sx={{ mb: 4 }}>
           <Typography variant="h6" gutterBottom>
@@ -391,7 +377,6 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
         </Box>
       )}
 
-      {/* Не рекомендованные технологии */}
       {notRecommended.length > 0 && (
         <Box>
           <Typography variant="h6" gutterBottom color="error">

@@ -1,4 +1,3 @@
-// src/components/ExplanationPanel.tsx
 import React, { useState } from 'react';
 import {
   Paper,
@@ -25,7 +24,6 @@ import {
   Timeline as TimelineIcon,
   List as ListIcon
 } from '@mui/icons-material';
-import { getCategoryIcon } from '../utils/helpers';
 
 interface ExplanationPanelProps {
   explanation: string[];
@@ -191,7 +189,7 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({ explanation,
           
           <Box sx={{ p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
             <Typography variant="caption" color="text.secondary">
-              ℹ️ Подсистема объяснений является ключевым требованием экспертной системы. 
+              Подсистема объяснений является ключевым требованием экспертной системы. 
               Она позволяет отслеживать логику принятия решений через цепочку сработавших правил.
             </Typography>
           </Box>
