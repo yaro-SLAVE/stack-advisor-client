@@ -1,260 +1,150 @@
-export enum AppType {
-    WEB = 'web',
-    ANDROID = 'android',
-    IOS = 'ios',
-    DESKTOP = 'desktop',
-    UNKNOWN = 'unknown'
-};
-
-export enum TimeToShow {
-    FAST = 'fast',
-    MEDIUM = 'medium',
-    SLOW = 'slow',
-    UNKNOWN = 'unknown'
-};
-
+// src/services/types.ts
 export enum ProjectType {
-    PET = 'pet',
-    RESEARCH = 'research',
-    COMMERCIAL = 'commercial',
-    UNKNOWN = 'unknown'
-};
+  WEB = 'WEB',
+  MOBILE = 'MOBILE',
+  DESKTOP = 'DESKTOP',
+  AI_ML = 'AI_ML',
+  DEVOPS = 'DEVOPS',
+  GAME = 'GAME'
+}
+
+export enum TeamExperience {
+  JAVA = 'JAVA',
+  JAVASCRIPT = 'JAVASCRIPT',
+  PYTHON = 'PYTHON',
+  DOTNET = 'DOTNET',
+  PHP = 'PHP',
+  GO = 'GO',
+  MIXED = 'MIXED',
+  NONE = 'NONE'
+}
+
+export enum BudgetLevel {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH',
+  ENTERPRISE = 'ENTERPRISE'
+}
+
+export enum TimeToMarket {
+  FAST = 'FAST',
+  NORMAL = 'NORMAL',
+  SLOW = 'SLOW'
+}
 
 export enum TeamSize {
-    MICRO = 'micro', 
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    BIG = 'big',
-    UNKNOWN = 'unknown'
-};
+  SMALL = 'SMALL',
+  MEDIUM = 'MEDIUM',
+  LARGE = 'LARGE'
+}
 
-export enum Scale {
-    COMPLEX = 'complex',
-    EASY = 'easy',
-    HARD = 'hard',
-    UNKNOWN = 'unknown'
-};
+export enum TechnologyCategory {
+  BACKEND = 'BACKEND',
+  FRONTEND = 'FRONTEND',
+  DATABASE = 'DATABASE',
+  DEVOPS = 'DEVOPS',
+  MOBILE = 'MOBILE',
+  AI_ML = 'AI_ML',
+  TESTING = 'TESTING'
+}
 
-export enum EntryThreshold {
-  LOW = 'low',
-  MEDIUM = 'medium',
-  HIGH = 'high'
-};
+export enum LicenseType {
+  OPEN_SOURCE = 'OPEN_SOURCE',
+  COMMERCIAL = 'COMMERCIAL',
+  FREEMIUM = 'FREEMIUM',
+  ENTERPRISE = 'ENTERPRISE'
+}
 
-export enum ExecutionModel {
-    INTERPRETABLE='interpretable',
-    COMPILED='compiled',
-    HYBRID='hybrid'
-};
+export enum RecommendationStatus {
+  PRIMARY = 'PRIMARY',
+  ALTERNATIVE = 'ALTERNATIVE',
+  NOT_RECOMMENDED = 'NOT_RECOMMENDED'
+}
 
-export enum Popularity {
-    POPULAR='popular',
-    ACTUAL='actual',
-    OUT_OF_GENERAL_USE='out_of_general_use'
-};
-
-export enum Purpose {
-    UNIVERSAL = 'universal',
-    WEB_BACKEND = 'web_backend',
-    WEB_FRONTEND = 'web_frontend',
-    MOBILE = 'mobile',
-    DESKTOP = 'desktop',
-};
-
-export enum TasksType {
-    BACKEND = 'backend',
-    FRONTEND = 'frontend',
-    MOBILE = 'mobile',
-    DESKTOP = 'desktop'
-};
-
-export enum StorageType {
-  RELATIONAL = 'relation',
-  DOCUMENT = 'document',
-  KEY_VALUE = 'key-value'
-};
-
-export enum StorageLocation {
-    LOCAL = 'local',
-    REMOTE = 'remote'
-};
-
-export enum DataBaseType {
-  SQL = 'sql',
-  NO_SQL = 'no_sql'
-};
-
-export type Language = {
+export type Technology = {
   id: number;
   name: string;
-  entry_threshold: EntryThreshold;
-  execution_model: ExecutionModel;
-  popularity: Popularity;
-  purpose: Purpose;
-};;
+  category: TechnologyCategory;
+  description?: string;
+  complexity?: number;
+  scalability?: number;
+  communitySize?: number;
+  maturity?: number;
+  performance?: number;
+  license?: LicenseType;
+  cloudNative?: boolean;
+  microservicesReady?: boolean;
+  bestFor?: string;
+}
 
-export type Framework = {
+export type TechnologyRecommendation = {
   id: number;
-  name: string;
-  languages: Language[];
-  is_reactive: boolean;
-  last_updated_at: string;
-  is_actual: boolean;
-  tasks_type: TasksType;
-};
-
-export type DataStorage = {
-  id: number;
-  name: string;
-  storage_type: StorageType;
-  storage_location: StorageLocation;
-  data_base_type: DataBaseType;
-};
-
-export type ProjectRecommendedResponse = {
-  language_recommended_list: Language[];
-  framework_recommended_list: Framework[];
-  data_storage_recommended_list: DataStorage[];
-};
-
-export type LanguagesListResponse = Language;
-
-export type FrameworksListResponse = Framework;
-
-export type DataStoragesListResponse = DataStorage;
-
-export type LanguageCreatingRequest = {
-  name: string;
-  entry_threshold: EntryThreshold;
-  execution_model: ExecutionModel;
-  popularity: Popularity;
-  purpose: Purpose;
+  technology: Technology;
+  confidence: number;
+  reason: string;
+  priority: number;
+  status: RecommendationStatus;
 }
 
-export type FrameworkCreatingRequest = {
-  name: string;
-  languages: number[];
-  is_reactive: boolean;
-  last_updated_at: string;
-  is_actual?: boolean;
-  tasks_type: TasksType;
-}
-
-export type DataStorageCreatingRequest = {
-  name: string;
-  storage_type: StorageType;
-  storage_location: StorageLocation;
-  data_base_type: DataBaseType;
-}
-
-export type LanguageRequirementsRequest = {
-  entry_threshold?: EntryThreshold;
-  execution_model?: ExecutionModel;
-  popularity?: Popularity;
-  purpose?: Purpose;
-}
-
-export type FrameworkRequirementsRequest = {
-  is_reactive?: boolean;
-  is_actual?: boolean;
-  tasks_type?: TasksType;
-}
-
-export type DataStorageRequirementsRequest = {
-  storage_type?: StorageType;
-  storage_location?: StorageLocation;
-  data_base_type?: DataBaseType;
-}
-
-export type ProjectRequirementsRequest = {
-  app_type?: AppType;
-  team_size?: TeamSize;
-  project_type?: ProjectType;
-  scale?: Scale;
-  time_to_show?: TimeToShow;
-  languages?: number[];
-  frameworks?: number[];
-  data_storages?: number[];
-  language_requirements?: LanguageRequirementsRequest;
-  framework_requirements?: FrameworkRequirementsRequest;
-  data_storage_requirements?: DataStorageRequirementsRequest;
-}
-
-export type RecommendationExplanation = {
-  id: number;
-  sessionId: string;
-  recommendationType: 'LANGUAGE' | 'FRAMEWORK' | 'DATA_STORAGE';
-  itemId: number;
-  itemName: string;
-  finalScore: number;
-  explanations: string[];
-  createdAt: string;
+export type ProjectRequirements = {
+  id?: number;
+  projectType: ProjectType;
+  teamExperience: TeamExperience;
+  teamSize: TeamSize;
+  budget: BudgetLevel;
+  timeToMarket: TimeToMarket;
+  needHighLoad: boolean;
+  needRealTime: boolean;
+  needHighSecurity: boolean;
+  teamMembers: number;
+  explanationChain?: string;
+  createdAt?: string;
+  recommendations?: TechnologyRecommendation[];
 }
 
 export type RuleExecutionLog = {
   id: number;
-  sessionId: string;
   ruleName: string;
+  firedRule: string;
+  matchedFacts: string;
+  result: string;
+  fullExplanation: string;
   timestamp: string;
-  objectsActivated: string;
-  scoreChanges: string;
-  executionContext: Record<string, any>;
 }
 
-export type SessionSummary = {
+export type Session = {
+  id: number;
   sessionId: string;
-  totalExplanations: number;
-  totalRulesExecuted: number;
-  sessionCreated: string;
-  explanationsByType: Record<string, number>;
-  rulesExecuted: Record<string, number>;
-  averageRecommendationScore: string;
-  topRecommendations: TopRecommendation[];
-  minScore?: string;
-  maxScore?: string;
-  medianScore?: string;
+  startedAt: string;
+  endedAt: string;
+  totalRulesFired: number;
 }
 
-export type TopRecommendation = {
-  type: string;
-  name: string;
-  score: string;
-  id?: number;
-  explanationCount?: number;
-}
-
-export type ApiResponse<T> = {
-  success: boolean;
-  data?: T;
+export type ExpertSystemResponse = {
+  sessionId?: string;
+  requirements?: ProjectRequirements;
+  recommendations?: TechnologyRecommendation[];
+  explanationChain?: string[];
+  auditLog?: string[];
+  rulesFired?: number;
   error?: string;
   message?: string;
+}
+
+export type ProjectFormData = {
+  projectType: ProjectType;
+  teamExperience: TeamExperience;
+  teamSize: TeamSize;
+  budget: BudgetLevel;
+  timeToMarket: TimeToMarket;
+  needHighLoad: boolean;
+  needRealTime: boolean;
+  needHighSecurity: boolean;
+  teamMembers: number;
+}
+
+export type ApiError = {
+  error: string;
+  message: string;
   timestamp?: string;
-}
-
-export type SessionExplanationsResponse = {
-  success: boolean;
-  sessionId: string;
-  timestamp: string;
-  explanations: RecommendationExplanation[];
-  ruleExecutionLogs: RuleExecutionLog[];
-  summary: SessionSummary;
-  totalItems: number;
-}
-
-export type RecentSessionsResponse = {
-  success: boolean;
-  sessions: Array<{
-    sessionId: string;
-    timestamp: string;
-    explanationCount: number;
-    ruleCount: number;
-  }>;
-  total: number;
-}
-
-export type FilterOptions = {
-  recommendationType?: string;
-  minScore?: number;
-  maxScore?: number;
-  searchTerm?: string;
 }
